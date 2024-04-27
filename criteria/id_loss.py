@@ -6,7 +6,7 @@ from models.encoders.model_irse import Backbone
 class IDLoss(nn.Module):
     def __init__(self,opts):
         super(IDLoss, self).__init__()
-        print('Loading ResNet ArcFace')
+        #print('Loading ResNet ArcFace')
         self.opts = opts 
         
         self.face_pool_1 = torch.nn.AdaptiveAvgPool2d((256, 256))

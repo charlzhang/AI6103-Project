@@ -138,8 +138,8 @@ def calc_loss(img, recon1, latent_source, out_latent):
     # 同样，如果身份识别损失的权重系数id_lambda大于0，计算并记录身份识别损失，并根据配置的权重累加到总损失中。
     if args.l2_lambda > 0:
         mse_loss = nn.MSELoss().cuda().eval()
-        print(f'recon1 size: {recon1.shape}')
-        print(f'img size: {img.shape}')
+        #print(f'recon1 size: {recon1.shape}')
+        #print(f'img size: {img.shape}')
         loss_l2_1 = F.mse_loss(recon1, img)
 
         loss_dict['loss_l2'] = float(loss_l2_1)
@@ -269,6 +269,7 @@ def main(args):
     agg_valid_loss_dict = []
     save_dict = None
     for epoch in range(args.epochs):
+        print(f'Epoch {epoch+1}=========================================')
         # 虽然每个epoch都 validate一下，但是每间隔3个epoch再显示图片，防止图片太多了
         if args.epochs % args.show_interval == 0:
             show_images = True

@@ -20,7 +20,7 @@ from PIL import Image
 class FaceParsingLoss(nn.Module):
     def __init__(self,opts):
         super(FaceParsingLoss, self).__init__()
-        print('Loading Face Parsing Net')
+        #print('Loading Face Parsing Net')
         
         self.opts = opts
         self.face_pool = torch.nn.AdaptiveAvgPool2d((512, 512))
