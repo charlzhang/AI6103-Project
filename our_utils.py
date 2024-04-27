@@ -3,6 +3,7 @@ import numpy as np
 from utils.common import tensor2im, im2tensor
 from torchvision import transforms
 import torch
+import torch.nn.functional as F
 
 def display_alongside_image(source_image, target_image,result_image):
     resize_dims = (256,256)
@@ -46,3 +47,8 @@ def resize_images(imgs):
     
     # 将列表中的张量堆叠成一个新的批次张量
     return torch.stack(processed_imgs).to('cuda')
+
+def resize_tensor(input_tensor, height, width):
+    # 使用双线性插值进行大小调整
+    resized_tensor = F.interpolate(input_tensor, size=(height, width), mode='bilinear', align_corners=False)
+    return resized_tensor
